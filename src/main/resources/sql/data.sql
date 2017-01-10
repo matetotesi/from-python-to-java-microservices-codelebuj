@@ -1,11 +1,11 @@
-INSERT INTO client (client_id)
-VALUES ('ketto');
-INSERT INTO client (client_id)
-VALUES ('harom');
-INSERT INTO client (client_id)
-VALUES ('negy');
-INSERT INTO client (client_id)
-VALUES ('ot');
+INSERT INTO client (client_id, client_name)
+VALUES ('ketto', 'CodecoolShop2');
+INSERT INTO client (client_id, client_name)
+VALUES ('harom', 'CodecoolShop3');
+INSERT INTO client (client_id, client_name)
+VALUES ('negy', 'CodecoolShop4');
+INSERT INTO client (client_id, client_name)
+VALUES ('ot', 'CodecoolShop5');
 
 
 INSERT INTO paid_products (product_id, quantity, purchase_time, client_identifier)

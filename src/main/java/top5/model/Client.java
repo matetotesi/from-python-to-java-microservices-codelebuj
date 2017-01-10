@@ -3,9 +3,11 @@ package top5.model;
 public class Client {
 
     private String clientKey;
+    private String clientName;
 
-    public Client (String clientKey){
+    public Client (String clientKey, String clientName){
         this.clientKey = clientKey;
+        this.clientName = clientName;
 
     }
 

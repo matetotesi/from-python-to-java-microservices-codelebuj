@@ -4,7 +4,8 @@ drop table if exists client;
 
 create table client
 (
-client_id varchar primary key
+client_id varchar primary key,
+client_name VARCHAR
 );
 
 create table paid_products
