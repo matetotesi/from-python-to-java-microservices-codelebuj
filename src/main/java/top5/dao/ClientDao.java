@@ -5,5 +5,5 @@ import top5.model.Client;
 
 public interface ClientDao {
     void addClient(Client client);
-    void findClient(Client client);
+    Client findClient(String id);
 }

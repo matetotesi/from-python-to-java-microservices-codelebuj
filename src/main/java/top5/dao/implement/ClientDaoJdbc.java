@@ -3,8 +3,7 @@ package top5.dao.implement;
 import top5.dao.ClientDao;
 import top5.model.Client;
 
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ClientDaoJdbc extends ConnectionDB implements ClientDao {
 
@@ -27,14 +26,36 @@ public class ClientDaoJdbc extends ConnectionDB implements ClientDao {
         return instance;
     }
 
+
     @Override
-    public String addClient(){
-        return "ok";
+    public void addClient(Client client) {
+        String query = "INSERT INTO client (client_id, name) VALUES(?,?);";
+        try {
+            PreparedStatement safeInput = getConnection().prepareStatement(query);
+            safeInput.setString(1,client.getClientKey());
+            safeInput.setString(2,client.getClientName());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     @Override
-    public String findClient(){
-        return "ok";
-    }
+    public Client findClient(String id) {
+        String query = "SELECT * FROM client where client_id =%s" + id;
+        Client found = null;
+        try {Connection connection = getConnection();
+            Statement stmt = connection.createStatement();
+            ResultSet resultSet = stmt.executeQuery(query);
 
+            if (resultSet.next()) {
+                found = new Client(resultSet.getString("client_id"),
+                        resultSet.getString("client_name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return found;
+    }
 }
