@@ -1,12 +1,11 @@
 package top5;
 
-import top5.dao.ClientDao;
 import top5.dao.implement.ClientDaoJdbc;
 import top5.model.Client;
 
 import java.math.BigInteger;
-import java.security.*;
-
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -19,15 +18,13 @@ public class APIKey {
         String dateString = date.toString();
         APIKey apiKey = new APIKey();
         String clientKey = apiKey.getMD5(dateString);
-        System.out.println("Your API key is : " + clientKey);
         System.out.println("Please write your brand name: ");
         Scanner sc = new Scanner(System.in);
         String i = sc.next();
         Client newClient = new Client(clientKey, i);
         ClientDaoJdbc saveClient = new ClientDaoJdbc();
-        System.out.println(newClient.getClientKey() + " " + newClient.getClientName());
         saveClient.addClient(newClient);
-
+        System.out.println("Your API key is : " + clientKey);
 
     }
 

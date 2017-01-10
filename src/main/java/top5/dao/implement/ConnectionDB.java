@@ -19,8 +19,6 @@ public class ConnectionDB {
     private static final String DB_PASSWORD = String.format("%s", ReadJson.readJsonFromFile().get("password"));
 
     public Connection getConnection() throws SQLException {
-        System.out.println(DATABASE + " " + DB_PASSWORD + " " + DB_USER);
-
         return DriverManager.getConnection(
                 DATABASE,
                 DB_USER,
