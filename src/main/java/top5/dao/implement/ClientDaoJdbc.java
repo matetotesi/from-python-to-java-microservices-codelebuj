@@ -29,11 +29,12 @@ public class ClientDaoJdbc extends ConnectionDB implements ClientDao {
 
     @Override
     public void addClient(Client client) {
-        String query = "INSERT INTO client (client_id, name) VALUES(?,?);";
         try {
+            String query = "INSERT INTO client (client_id, client_name) VALUES(?,?);";
             PreparedStatement safeInput = getConnection().prepareStatement(query);
             safeInput.setString(1,client.getClientKey());
             safeInput.setString(2,client.getClientName());
+            safeInput.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
