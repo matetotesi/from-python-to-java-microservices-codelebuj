@@ -6,9 +6,7 @@ import top5.controller.Top5APIController;
 
 import java.net.URISyntaxException;
 
-import static spark.Spark.exception;
-import static spark.Spark.get;
-import static spark.Spark.port;
+import static spark.Spark.*;
 
 public class Top5Service {
     private static final Logger logger = LoggerFactory.getLogger(Top5Service.class);
@@ -19,7 +17,10 @@ public class Top5Service {
         Top5Service application = new Top5Service();
         application.controller = new Top5APIController();
         port(60000);
-
+        //post to shot
+        post("/api/:apikey/addproduct", application.controller::addProduct);
+        // get prod details
+        get("/api/:apikey/gettop5", application.controller::getTop5);
 
         get("/status", application.controller::status);
 

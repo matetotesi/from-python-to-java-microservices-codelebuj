@@ -7,25 +7,31 @@ import spark.Request;
 import spark.Response;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import org.apache.http.client.utils.URIBuilder;
 
 
 public class Top5APIController {
     private static final Logger logger = LoggerFactory.getLogger(Top5APIController.class);
-    private static final String SERVICE_URL = "http://localhost:60001";
-    private static final String API_KEY = "2e4tg";
 
+    public String addProduct(Request request, Response response) throws IOException {
+        // validate apikey
+        String apiKey = request.params(":apikey");
+        // save product to db for client
 
+        // return as JSON
+        return "ok";
+    }
+
+    public String getTop5(Request request, Response response) throws IOException {
+        // validate apikey
+        String apiKey = request.params(":apikey");
+        // get top5 from db for client
+
+        // return as JSON
+        return "dasdasdas";
+    }
 
     public String status(Request request, Response response) throws IOException {
         return "ok";
     }
-
-    /*private String execute(String url) throws IOException, URISyntaxException {
-        URI uri = new URIBuilder(SERVICE_URL + url).build();
-        return Request.Get(uri).execute().returnContent().asString();
-    }*/
 
 }
