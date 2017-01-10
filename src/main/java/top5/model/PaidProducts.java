@@ -17,4 +17,19 @@ public class PaidProducts {
         this.clientKey = clientKey;
     }
 
+    public int getProductID() {
+        return productID;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public Date getPurchaseTime() {
+        return purchaseTime;
+    }
+
+    public Client getClientKey() {
+        return clientKey;
+    }
 }
