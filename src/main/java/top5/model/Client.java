@@ -18,4 +18,12 @@ public class Client {
     public void setClientKey(String clientKey) {
         this.clientKey = clientKey;
     }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
 }
