@@ -1,6 +1,7 @@
 package top5.model;
 
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class PaidProducts {
@@ -8,13 +9,19 @@ public class PaidProducts {
     int productID;
     int quantity;
     Date purchaseTime;
-    Client clientKey;
+    String clientKey;
 
-    public PaidProducts(int productID, int quantity, Date purchaseTime, Client clientKey) {
+    public PaidProducts(int productID, int quantity, Date purchaseTime, String clientKey) {
         this.productID = productID;
         this.quantity = quantity;
         this.purchaseTime = purchaseTime;
         this.clientKey = clientKey;
+    }
+
+    public PaidProducts(int productID, int quantity, Date purchaseTime) {
+        this.productID = productID;
+        this.quantity = quantity;
+        this.purchaseTime = purchaseTime;
     }
 
     public int getProductID() {
@@ -29,7 +36,7 @@ public class PaidProducts {
         return purchaseTime;
     }
 
-    public Client getClientKey() {
+    public String getClientKey() {
         return clientKey;
     }
 }

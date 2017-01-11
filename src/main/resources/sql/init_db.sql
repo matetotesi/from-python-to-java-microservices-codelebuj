@@ -10,7 +10,6 @@ client_name VARCHAR
 
 create table paid_products
 (
-id serial primary key,
 product_id int,
 quantity int,
 purchase_time date,

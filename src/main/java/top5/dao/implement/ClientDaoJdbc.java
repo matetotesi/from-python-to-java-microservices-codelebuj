@@ -7,6 +7,16 @@ import java.sql.*;
 
 public class ClientDaoJdbc extends ConnectionDB implements ClientDao {
 
+    private static ClientDaoJdbc instance = null;
+    public static ClientDaoJdbc getInstance() {
+        if (instance == null) {
+            instance = new ClientDaoJdbc();
+        }
+        return instance;
+    }
+
+
+
     @Override
     public Connection getConnection() throws SQLException {
         return super.getConnection();
@@ -17,14 +27,6 @@ public class ClientDaoJdbc extends ConnectionDB implements ClientDao {
         super.executeQuery(query);
     }
 
-    private static ClientDaoJdbc instance = null;
-
-    public static ClientDaoJdbc getInstance() {
-        if (instance == null) {
-            instance = new ClientDaoJdbc();
-        }
-        return instance;
-    }
 
 
     @Override
@@ -38,13 +40,11 @@ public class ClientDaoJdbc extends ConnectionDB implements ClientDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
 
     @Override
     public Client findClient(String id) {
-        String query = "SELECT * FROM client where client_id =%s" + id;
+        String query = "SELECT * FROM client WHERE client_id = '" + id + "';";
         Client found = null;
         try {Connection connection = getConnection();
             Statement stmt = connection.createStatement();

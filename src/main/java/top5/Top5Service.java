@@ -18,7 +18,7 @@ public class Top5Service {
         application.controller = new Top5APIController();
         port(60000);
         //post to shot
-        post("/api/:apikey/addproduct", application.controller::addProduct);
+        get("/api/:apikey/addproduct", application.controller::addProduct);
         // get prod details
         get("/api/:apikey/gettop5", application.controller::getTop5);
 
