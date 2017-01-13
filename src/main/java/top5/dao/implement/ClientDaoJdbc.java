@@ -1,11 +1,10 @@
 package top5.dao.implement;
 
-import top5.dao.ClientDao;
 import top5.model.Client;
 
 import java.sql.*;
 
-public class ClientDaoJdbc extends ConnectionDB implements ClientDao {
+public class ClientDaoJdbc extends ConnectionDB {
 
     private static ClientDaoJdbc instance = null;
     public static ClientDaoJdbc getInstance() {
@@ -29,10 +28,10 @@ public class ClientDaoJdbc extends ConnectionDB implements ClientDao {
 
 
 
-    @Override
+
     public void addClient(Client client) {
         try {
-            String query = "INSERT INTO client (client_id, client_name) VALUES(?,?);";
+            String query = "INSERT INTO client (client_identifier, client_name) VALUES(?,?);";
             PreparedStatement safeInput = getConnection().prepareStatement(query);
             safeInput.setString(1,client.getClientKey());
             safeInput.setString(2,client.getClientName());
@@ -42,9 +41,8 @@ public class ClientDaoJdbc extends ConnectionDB implements ClientDao {
         }
     }
 
-    @Override
     public Client findClient(String id) {
-        String query = "SELECT * FROM client WHERE client_id = '" + id + "';";
+        String query = "SELECT * FROM client WHERE client_identifier = '" + id + "';";
         Client found = null;
         try {Connection connection = getConnection();
             Statement stmt = connection.createStatement();
