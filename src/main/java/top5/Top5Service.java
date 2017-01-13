@@ -16,9 +16,12 @@ public class Top5Service {
         logger.debug("Starting " + Top5Service.class.getName() + "Server is running");
         Top5Service application = new Top5Service();
         application.controller = new Top5APIController();
-        port(60000);
+        staticFiles.location("/static");
+        port(60001);
         //post to shot
-        get("/api/:apikey/addproduct", application.controller::addProduct);
+
+        // --- ROOTING ---
+        post("/api/:apikey/addproduct", application.controller::addProduct);
         // get prod details
         get("/api/:apikey/gettop5", application.controller::getTop5);
 
