@@ -4,7 +4,8 @@ drop table if exists client;
 
 create table client
 (
-client_id varchar primary key,
+client_id SERIAL PRIMARY KEY ,
+client_identifier varchar UNIQUE ,
 client_name VARCHAR
 );
 
@@ -13,5 +14,5 @@ create table paid_products
 product_id int,
 quantity int,
 purchase_time date,
-client_identifier varchar REFERENCES client(client_id) on delete cascade on update cascade
+client_id INTEGER REFERENCES client(client_id) on delete cascade on update cascade
 );
