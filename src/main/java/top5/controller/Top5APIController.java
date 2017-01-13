@@ -29,11 +29,11 @@ public class Top5APIController {
         Gson gson = new Gson();
         String jsonInString = request.body();
         PaidProducts data= gson.fromJson(jsonInString, PaidProducts.class);
-        System.out.println("WRF" + data.toString());
+        System.out.println("JSON " + data.toString());
         if (!clientDao.findClient(request.params(":apikey")).equals(null)){
-            paidProductDao.addPaidProducts(new PaidProducts(data.getProductID(),data.getQuantity(), date, data.getClientKey()));
+            paidProductDao.addPaidProducts(new PaidProducts(data.getProductID(),data.getQuantity(), date, request.params(":apikey")));
         }
-        return request.body();
+        return "OK";
     }
 
     public String getTop5(Request request, Response response) throws IOException {
