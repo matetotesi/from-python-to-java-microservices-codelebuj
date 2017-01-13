@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+<button id="test"></button>
+<script>
+
+    $("#test").click(function() {
+        $.ajax({
+            contentType: 'application/json',
+            dataType: 'json',
+            type: 'POST',
+            url: "http://localhost:60001/api/negy/addproduct",
+            data: JSON.stringify({productID: 1, quantity: 2, clientKey: 4}),
+            success: function(resp){
+            console.log(resp);
+        }
+    }) });
+
+
+</script>
+
+</body>
+</html>

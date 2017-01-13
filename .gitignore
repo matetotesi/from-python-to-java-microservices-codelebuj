@@ -6,9 +6,10 @@
 # IntelliJ
 .idea/
 target/
-
+login_template.json
 login.json
 from-python-to-java-microservices-codelebuj.iml
+codelbuj-microservices.iml
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
