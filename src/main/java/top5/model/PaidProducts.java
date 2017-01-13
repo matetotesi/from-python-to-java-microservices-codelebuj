@@ -18,10 +18,9 @@ public class PaidProducts {
         this.clientKey = clientKey;
     }
 
-    public PaidProducts(int productID, int quantity, Date purchaseTime) {
+    public PaidProducts(int productID, int quantity) {
         this.productID = productID;
         this.quantity = quantity;
-        this.purchaseTime = purchaseTime;
     }
 
     public int getProductID() {
@@ -38,5 +37,15 @@ public class PaidProducts {
 
     public String getClientKey() {
         return clientKey;
+    }
+
+    @Override
+    public String toString() {
+        return "PaidProducts{" +
+                "productID=" + productID +
+                ", quantity=" + quantity +
+                ", purchaseTime=" + purchaseTime +
+                ", clientKey='" + clientKey + '\'' +
+                '}';
     }
 }
